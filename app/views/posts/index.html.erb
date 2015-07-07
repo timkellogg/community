@@ -2,6 +2,8 @@
 
 <h1>Listing Posts</h1>
 
+<%= will_paginate @posts %>
+
 <table>
   <thead>
     <tr>
@@ -15,6 +17,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td><%= post.rank %></td>
         <td><%= post.title %></td>
         <td><%= post.description %></td>
         <td><%= post.link %></td>
@@ -27,5 +30,5 @@
 </table>
 
 <br>
-
+<%= will_paginate @posts %>
 <%= link_to 'New Post', new_post_path %>
