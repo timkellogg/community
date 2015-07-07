@@ -1,0 +1,8 @@
+/* This is for the main site header*/
+
+#site-header {
+	min-height: 50px;
+	background-color: white;
+	margin-bottom: 20px;
+	@include box-shadow;
+}

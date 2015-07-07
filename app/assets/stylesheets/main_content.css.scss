@@ -1,0 +1,48 @@
+/* This is the main content stylings */
+
+#main-content {
+	background-color: white;
+	@include box-shadow;
+}
+
+/* Post Listing */
+#posts-listing {
+
+	.individual-post {
+		list-style-type: none;
+	}
+
+	.post-title {
+		font-size: 1.4em;
+		font-weight: bolder;
+	}
+
+	li {
+		padding: 5px;
+	}
+
+	.post-rank {
+
+		font-size: 1.4em;
+		font-weight: bolder;
+	}
+
+	.post-votes { 
+
+		font-size: .8em;
+	
+		.post-votes-up {
+			color: blue;
+		}
+
+		.post-votes-down {
+			color: red;
+		}
+	}
+
+	a:hover {
+		color: black;
+	}
+}
+
+

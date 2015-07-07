@@ -1,0 +1,55 @@
+/* This stylesheet contains shared variables, fonts and mixins used across the site*/
+
+/* Colors 
+*****************/
+$dark-green:    #28262c; 
+$purple:        #998fc7; 
+$lightblue:     #d4c2fc; 
+$offwhite:      #f9f5ff; 
+$darkblue:      #14248a; 
+$verylightgray: #eee;
+$orange:				#8dc44e;
+$blue:					#8550F7;
+
+/* Fonts 
+******************/
+$base:  helvetica, sans-serif;		
+
+
+/* Mixins 
+******************/
+
+/* Rounded Corners */
+@mixin rounded-corners($radius) {
+	border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+}
+
+/* Opacity */
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/* Font Sizes */
+@mixin font-size($sizeValue: 12 ){
+  font-size: $sizeValue + px; //fallback for old browsers
+  font-size: (0.125 * $sizeValue) + rem;
+}
+
+/* Line Height */
+@mixin line-height($heightValue: 12 ){
+    line-height: $heightValue + px; //fallback for old browsers
+    line-height: (0.125 * $heightValue) + rem;
+}
+
+/* Box Shadow */
+@mixin box-shadow {
+	-webkit-box-shadow: 3px 5px 5px -5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 3px 5px 5px -5px rgba(0,0,0,0.75);
+	box-shadow: 3px 5px 5px -5px rgba(0,0,0,0.75);
+}
+
+

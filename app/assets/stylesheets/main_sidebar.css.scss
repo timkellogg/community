@@ -1,0 +1,36 @@
+/* This is the main content stylings */
+
+#user_nav {
+	background-color: white;
+	min-height: 400px;
+	@include box-shadow;
+
+	.btn-user-post,
+	.btn-user-edit,
+	.btn-user-logout,
+	.btn-user-signup,
+	.btn-user-login {
+		width: 100%;
+		display: block;
+		margin: 10px 5px;
+	}
+
+	.btn-user-post {
+		background-color: $lightblue;
+		
+		&:hover {
+			background-color: darken($lightblue, 5%);
+		}
+	}
+
+
+	.btn-user-edit {
+		background-color: darken($blue, 5%);
+	}
+
+	.btn-user-logout {
+		background-color: $orange;
+	}
+
+
+}

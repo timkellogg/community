@@ -1,34 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+<h1>Community</h1>
 
 <%= will_paginate @posts %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Link</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <table id="posts-listing" class="table-striped">
+    <% @posts.each_with_index do |post, index| %> 
+      <tr class="individual-post" colspan="12">
+        <td class="post-rank" colspan="2">
+          <%= index + 1 %>
+        </td>
+        <td class="post-votes" colspan="2">
+          <span class="post-votes-up"><%= post.upvotes %></span>
+          <br >
+          <span class="post-votes-down"><%= post.downvotes %></span>
+        </td>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.rank %></td>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= post.link %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="post-details" colspan="8">
+        <%= link_to post do %>
+          <li class="post-title"><%= truncate post.title, length: 50 %></li>
+          <li class="post-description"><%= post.description %></li>
+        <% end %>
+          <li class="post-link"><%= post.link %></li>
+          <li class="post-author">by <%= post.user %></li>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+
 
 <br>
 <%= will_paginate @posts %>
-<%= link_to 'New Post', new_post_path %>
+
