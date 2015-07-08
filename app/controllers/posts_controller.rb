@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.paginate(:page => params[:page]).order("rank DESC")
-
   end
 
   # GET /posts/1
@@ -18,7 +17,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
-
+ 
   # GET /posts/1/edit
   def edit
   end
@@ -71,6 +70,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :link)
+      params.require(:post).permit(:title, :description, :link, :content)
     end
 end

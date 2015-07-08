@@ -5,6 +5,7 @@
 <%= will_paginate @posts %>
 
   <table id="posts-listing" class="table-striped">
+
     <% @posts.each_with_index do |post, index| %> 
       <tr class="individual-post" colspan="12">
         <td class="post-rank" colspan="2">
@@ -16,14 +17,23 @@
           <span class="post-votes-down"><%= post.downvotes %></span>
         </td>
 
-        <td class="post-details" colspan="8">
-        <%= link_to post do %>
-          <li class="post-title"><%= truncate post.title, length: 50 %></li>
-          <li class="post-description"><%= post.description %></li>
+        <% if post.img_url %>
+          <td class="post-img" colspan="2">
+          <%= image_tag(post.img_url, class: 'img', size: '70x70') %>
+          </td>
         <% end %>
-        <%= link_to user_path(post.user) do %>
-          <li class="post-user">by <%= User.find(post.user).username %></li>
-        <% end %>
+
+        <td class="post-details" colspan="6">
+
+          <%= link_to post do %>
+            <li class="post-title"><%= truncate post.title, length: 50 %></li>
+            <li class="post-content"><%= truncate post.content, length: 400 %></li>
+          <% end %>
+          
+          <%= link_to user_path(post.user) do %>
+            <li><span class="post-created-date">Submitted <%= time_ago_in_words(post.created_at) %> ago</span>
+            &mdash;<span class="post-user"><%= User.find(post.user).username %></span></li> 
+          <% end %>
         </td>
       </tr>
     <% end %>

@@ -19,20 +19,22 @@ end
 100.times do |n|
 	title  		  = Faker::Lorem.sentence  
 	link        = Faker::Company.bs 
-	description = Faker::Lorem.paragraph
+	content     = Faker::Lorem.paragraph(30)
 	upvotes     = Faker::Number.between(1, 2500)
 	downvotes   = Faker::Number.between(0, -2500)
 	rank        = upvotes + downvotes
 	user_id    	= n
+	img_url     = Faker::Avatar.image 
 
 	Post.create!(
 		title: 				title,
 		link: 				link,
-		description: 	description,
+		content:      content, 
 		upvotes: 			upvotes,
 		downvotes: 		downvotes,
 		rank: 				rank,
-		user_id: 			user_id 
+		user_id: 			user_id, 
+		img_url: 			img_url
 	)
 end  
 

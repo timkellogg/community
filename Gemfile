@@ -11,7 +11,7 @@ gem 'jbuilder', 								'~> 2.0'
 gem 'sdoc', 										'~> 0.4.0', group: :doc
 gem 'devise'
 gem 'autoprefixer-rails'
-gem 'will_paginate' 						
+gem 'will_paginate' 	
 
 
 group :development, :test do
