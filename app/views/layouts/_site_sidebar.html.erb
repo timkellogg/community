@@ -1,6 +1,6 @@
 <div id="user_nav" class="col-md-3 col-md-offset-1">
 	<% if user_signed_in? %>
-		Welcome <strong><%= current_user.email %>!</strong><br>
+		Welcome <strong><%= current_user.username %>!</strong><br>
 		<%= link_to 'New Post', new_post_path, class: 'btn btn-user-post' %>
 		<%= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn-user-edit' %>
 		<%= link_to 'Logout', destroy_user_session_path, class: 'btn btn-user-logout', method: :delete %>

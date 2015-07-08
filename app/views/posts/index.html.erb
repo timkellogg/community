@@ -21,8 +21,9 @@
           <li class="post-title"><%= truncate post.title, length: 50 %></li>
           <li class="post-description"><%= post.description %></li>
         <% end %>
-          <li class="post-link"><%= post.link %></li>
-          <li class="post-author">by <%= post.user %></li>
+        <%= link_to user_path(post.user) do %>
+          <li class="post-user">by <%= User.find(post.user).username %></li>
+        <% end %>
         </td>
       </tr>
     <% end %>
