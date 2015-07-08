@@ -5,11 +5,29 @@
   <%= @post.title %>
 </p>
 
+<p class="post-author">
+	<p class="lead"><%= @post.user.username %> Says</p>
+</p>
+
+
 <p class="post-content">
 	<%= @post.content %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<hr>
+
+<%= render :partial => '/layouts/comments' %>
+
+<div class="post-comments">
+	<h2>Comments</h2>
+	<% @post.comments.each do |comment| %>
+		<p><%= comment.body %></p>
+	<% end %>
+</div>
+
+
 
 
