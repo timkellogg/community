@@ -40,7 +40,24 @@
 		}
 	}
 
+	.btn-user-signup {
+		background-color: $lightblue;
+
+		&:hover {
+			background-color: darken($lightblue, 5%);
+		}
+	}
+
+	.btn-user-login {
+		background-color: $blue;
+
+		&:hover {
+			background-color: darken($blue, 5%);
+		}
+	}
+
 	a {
 		color: white;
 	}
+
 }

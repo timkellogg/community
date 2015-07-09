@@ -1,17 +1,52 @@
 <p id="notice"><%= notice %></p>
+	<p class="lead"><%= @user.username %>'s Profile</p>
+<hr>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<p class="lead"><small>Voting</small></p>
+<hr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
 
-<p>
-	<%= @user.posts %>
-</p>
 
-<%= link_to 'Edit', edit_user_registration(@user) %> 
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h4 class="panel-title">Recent Posts</h4>
+  </div>
+  <div class="panel-body">
+  	<% if @posts.any? %>
+			<ul id="user-posts-list">
+				<% @posts.each do |post| %>
+					<li id="user-post-item">
+						<h4><%= post.title %></h4>
+						<p><%= truncate(post.content, length: 200) %></p>
+						<p>submmitted <%= time_ago_in_words(post.created_at) %>
+					</li>
+				<% end %>
+			</ul>
+		<% else %>
+			<p><%= @user.username %> hasn't created any posts yet!</p>
+		<% end %> 
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Recent Comments</h4>
+  </div>
+  <div class="panel-body">
+  	<% if @comments.any? %>
+			<ul id="user-posts-list">
+				<% @comments.each do |post| %>
+					<li id="user-post-item">
+						<p><%= truncate(comment.body, length: 200) %></p>
+						<p>submmitted <%= time_ago_in_words(comment.created_at) %>
+					</li>
+				<% end %>
+			</ul>
+		<% else %>
+			<p><%= @user.username %> hasn't commented on anything yet!</p>
+		<% end %> 
+  </div>
+</div>
+
+
+
