@@ -52,4 +52,23 @@ $base:  helvetica, sans-serif;
 	box-shadow: 3px 5px 5px -5px rgba(0,0,0,0.75);
 }
 
+/* Generic Classes 
+*******************/
+
+/* Fonts */
+.sub-heading {
+  @include font-size(11);
+  font-weight: bold;
+}
+
+/* Links */
+.link-strong p {
+  color: black;
+  
+  &:hover {
+    text-decoration: underline;
+    -moz-text-decoration-color: black; /* Code for Firefox */
+    text-decoration-color: black;
+  }
+}
 

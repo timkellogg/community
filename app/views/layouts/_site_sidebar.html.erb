@@ -1,9 +1,23 @@
-<div id="user_nav" class="col-md-3 col-md-offset-1">
+<div id="user_nav" class="col-md-3 col-md-offset-1 text-center">
 	<% if user_signed_in? %>
-		Welcome <strong><%= current_user.username %>!</strong><br>
+	<%= link_to user_path(current_user), class: "link-strong" do %>
+		<p class="sub-heading"><%= current_user.email %></p>
+	<% end %>
+		<hr>
 		<%= link_to 'New Post', new_post_path, class: 'btn btn-user-post' %>
 		<%= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn-user-edit' %>
 		<%= link_to 'Logout', destroy_user_session_path, class: 'btn btn-user-logout', method: :delete %>
+		<hr>
+		<div id="user-stats">
+			<p class="sub-heading">Your Community Stats</p>
+		<hr>
+			<ul id="user-stats-list" class="list-group">	
+				<li class="list-group-item">Submissions:<span class="badge"><%= current_user.posts.count %></span></li>
+				<li class="list-group-item">Comments Made:<span class="badge"><%= current_user.comments.count %></span></li>
+				<li class="list-group-item">Upvotes Given:<span class="badge">0</span></li>
+				<li class="list-group-item">Downvotes Given:<span class="badge">0</span></li>
+			</ul>
+		</div>
 	<% else %>
 		<%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-user-signup' %>
 		<%= link_to 'Login', new_user_session_path, class: 'btn btn-user-login' %>

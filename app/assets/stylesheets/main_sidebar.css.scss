@@ -1,6 +1,7 @@
 /* This is the main content stylings */
 
 #user_nav {
+	padding-top: 10px;
 	background-color: white;
 	min-height: 400px;
 	@include box-shadow;
@@ -23,14 +24,23 @@
 		}
 	}
 
-
 	.btn-user-edit {
-		background-color: darken($blue, 5%);
+		background-color: $blue;
+
+		&:hover {
+			background-color: darken($blue, 5%);
+		}
 	}
 
 	.btn-user-logout {
-		background-color: $orange;
+		background-color: $darkblue;
+	
+		&:hover {
+			background-color: darken($darkblue, 5%);
+		}
 	}
 
-
+	a {
+		color: white;
+	}
 }

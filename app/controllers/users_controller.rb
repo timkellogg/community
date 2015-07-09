@@ -23,4 +23,10 @@ class UsersController < ApplicationController
 	def destroy
 	end
 
+	def show_all_posts
+		@user = User.find(params[:id])
+		@posts = @user.posts 
+	end
+
+	
 end

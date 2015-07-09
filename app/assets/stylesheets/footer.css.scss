@@ -1,0 +1,11 @@
+#footer {
+	min-height: 50px;
+	@include box-shadow;
+	margin-top: 50px;
+
+	a {
+		color: blue;
+	}
+}
+
+/*http://stackoverflow.com/questions/26935547/rails-4-how-to-create-actions-using-relationships-between-three-models*/
