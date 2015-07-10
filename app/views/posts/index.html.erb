@@ -26,6 +26,7 @@
           <%= link_to post do %>
             <li class="post-title"><%= truncate post.title, length: 50 %></li>
             <li class="post-content"><%= truncate post.content, length: 400 %></li>
+            <li><span class="post-comments"><%= post.comments.count %> comments</span></li>
           <% end %>
           
           <%= link_to user_path(post.user) do %>

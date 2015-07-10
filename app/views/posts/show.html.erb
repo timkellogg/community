@@ -13,11 +13,10 @@
 </p>
 
 <p class="post-abilities-tab">
-<%= link_to 'Edit', edit_post_path(@post) %> 
-
-<%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you sure?" %>
-
+	<%= link_to 'Edit', edit_post_path(@post) %> 
+	<%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you sure?" %>
 </p>
+
 <%= link_to 'Back', posts_path %>
 
 <hr>
@@ -25,11 +24,25 @@
 <%= render :partial => '/layouts/comments' %>
 
 <div class="post-comments">
-	<h2>Comments</h2>
+	<h3>Comments</h3>
+<% if @post.comments.count != 0 %>
 	<% @post.comments.each do |comment| %>
-		<p><%= comment.body %></p>
+	<div class="panel panel-default">
+		<div class="comment-head panel-heading">
+			<h4><%= comment.user %>  <span class="upvotes">&#x25B2; <%= comment.upvotes %></span> <span class="downvotes">&#x25BC; 
+			<%= comment.downvotes %></span> | Submitted <%= time_ago_in_words (comment.created_at) unless comment.created_at.blank? %> ago</h4>
+		</div>
+		<div class="panel-body">
+		<%= comment.body %>
+		</div>
+	</div>
 	<% end %>
+<% else %>
+<p>No comments yet-be the first!</p>
 </div>
+<% end %>
+
+
 
 
 

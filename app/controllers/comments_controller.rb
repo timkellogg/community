@@ -8,11 +8,12 @@ class CommentsController < ApplicationController
 	end 
 
 	def create 
+		authorize! :index, User 
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.create(comment_params)
 		@comment.user_id = current_user.id 
 		if @comment.save!
-			redirect_to post_path(@post)
+			redirect_to @post
 		else 
 
 		end
@@ -27,3 +28,4 @@ class CommentsController < ApplicationController
 			params.require(:comment).permit(:body)
 		end 
 end
+
