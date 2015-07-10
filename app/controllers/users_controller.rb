@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 		def require_permission 
 			if current_user.id != @user.id 
 				redirect_to root_url 
-				flash.notice = "You aren't able to do that."
+				flash[:danger] = "You don't have permission to do that."
 			end 
 		end
 

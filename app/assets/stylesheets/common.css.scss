@@ -72,3 +72,21 @@ $base:  helvetica, sans-serif;
   }
 }
 
+/* Flash Notices
+***************/
+
+
+.alert {
+  margin-top: 10px; 
+
+}
+
+.alert-notice {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}

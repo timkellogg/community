@@ -10,20 +10,22 @@
 <body>
 
 <div class="container-fluid">
-	
 	<%= render :partial => '/layouts/site_header' %>
 
 	<div id="main-content" class="col-md-8">
-		<p id="notice"><%= notice%></p>
+
+	<% flash.each do |key, value| %>
+  	<div class="alert alert-<%= key %>"><%= value %></div>
+	<% end %>
+
+
 		<%= yield %>
 	</div>
 
 	<%= render :partial => '/layouts/site_sidebar' %>
 
 </div>
-
 	<%= render :partial => '/layouts/footer' %>
-
 	<%= debug(params) if Rails.env.development? %>
 </body>
 </html>
