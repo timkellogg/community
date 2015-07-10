@@ -1,2 +1,5 @@
 <div id="site-header" class="row">
+	<% if can? :index, :users %> 
+		<%= link_to 'Users', users_path %> 
+	<% end %>
 </div>

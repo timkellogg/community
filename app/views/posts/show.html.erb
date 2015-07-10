@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span id="notice" class="sr-only">Error:</span>
+  <%= notice %> 
+</div>
 
 <p class="post-title">
   <strong>Title:</strong>
@@ -14,7 +18,12 @@
 	<%= @post.content %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<p class="post-abilities-tab">
+<%= link_to 'Edit', edit_post_path(@post) %> 
+
+<%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you sure?" %>
+
+</p>
 <%= link_to 'Back', posts_path %>
 
 <hr>

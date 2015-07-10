@@ -1,3 +1,4 @@
+# Create generic users 
 100.times do |n|
 	email       					= Faker::Internet.email 
 	username    					= Faker::Lorem.word 
@@ -5,6 +6,7 @@
 	password_confirmation = 'password' 
 	reset_password_token  = Faker::Lorem.word 
 	id 										= n
+	role 									= "user"
 
 	User.create!(
 		email: 									email,
@@ -12,10 +14,34 @@
 		password: 							password,
 		password_confirmation: 	password_confirmation,
 		reset_password_token:   reset_password_token,
-		id: id 			
+		id: 										id,
+		role:                   role  			
 	)
 end 
 
+# Create admin user (modify/change/delete anything and create categories)
+User.create!(
+	email:     							"tim.kellogg@gmail.com",
+	username: 							"tkellogg",
+	password: 							"password", 
+	password_confirmation:  "password",
+	reset_password_token:   Faker::Lorem.word,
+	id:                     101,
+	role:                   "admin"
+)
+
+# Create moderator user (modify and delete comments)
+User.create!(
+	email: 									"moderator@community.com",
+	username:  							"moderator",
+	password: 							"password", 
+	password_confirmation:  "password",
+	reset_password_token:   Faker::Lorem.word,
+	id: 										102, 
+	role: 									"mod"
+)
+
+# Create Posts 
 100.times do |n|
 	title  		  = Faker::Lorem.sentence  
 	link        = Faker::Company.bs 

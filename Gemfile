@@ -12,6 +12,7 @@ gem 'sdoc', 										'~> 0.4.0', group: :doc
 gem 'devise'
 gem 'autoprefixer-rails'
 gem 'will_paginate' 	
+gem 'cancancan', 								'~> 1.10'
 
 
 group :development, :test do

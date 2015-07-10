@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
 <body>
 
@@ -13,6 +14,7 @@
 	<%= render :partial => '/layouts/site_header' %>
 
 	<div id="main-content" class="col-md-8">
+		<p id="notice"><%= notice%></p>
 		<%= yield %>
 	</div>
 
@@ -22,5 +24,6 @@
 
 	<%= render :partial => '/layouts/footer' %>
 
+	<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

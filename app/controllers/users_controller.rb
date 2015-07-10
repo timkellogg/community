@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
+	before_filter :require_permission, only: [:edit, :destroy]
 
+	def index 
+		authorize! :index, User 
+		@users = User.all 
+	end
 
 	def show 
 		@user = User.find(params[:id])
@@ -10,8 +15,21 @@ class UsersController < ApplicationController
 	def update
 	end
 
+	def edit 
+		authorize! :index, User
+	end 
+
 	def destroy
 	end
+
+	private 
+
+		def require_permission 
+			if current_user.id != @user.id 
+				redirect_to root_url 
+				flash.notice = "You aren't able to do that."
+			end 
+		end
 
 	
 end
