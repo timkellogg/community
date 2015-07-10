@@ -34,6 +34,7 @@ class PostsController < ApplicationController
           flash[:success] = "Post was successfully created."
         }
         format.json { render :show, status: :created, location: @post }
+        format.js {}
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }

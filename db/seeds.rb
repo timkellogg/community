@@ -64,3 +64,23 @@ User.create!(
 	)
 end  
 
+# Create Categories 
+10.times do |n|
+
+	title            = %w[front girls sports politics religion programming].sample(1)			
+	subscribers      = rand(1..99)
+	description  		 = Faker::Lorem.paragraph(30)
+	post_id          = rand(1..100)
+  
+	Category.create!(
+		title:          title,
+		subscribers:    subscribers,
+		description:    description,
+		post_id:        post_id
+	)
+end
+
+
+
+
+

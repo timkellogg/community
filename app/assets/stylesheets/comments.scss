@@ -1,3 +1,14 @@
-// Place all the styles related to the Comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* This stylesheet contains stylings for posts' comments */
+
+.comment-vote-total {
+	@include font-size;
+	padding: 5px;
+}
+
+.comment-upvote {
+	color: green;
+}
+
+.comment-downvote {
+	color: red;
+}

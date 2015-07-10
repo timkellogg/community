@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  subscribers: 1
+  timestamps: 2015-07-10 10:14:20
+  mod: 1
+  description: MyText
+  references: 
+
+two:
+  title: MyString
+  subscribers: 1
+  timestamps: 2015-07-10 10:14:20
+  mod: 1
+  description: MyText
+  references: 

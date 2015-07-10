@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   devise_for :users 
   resources :users, :only => [:index, :show]
 
-  resources :posts do
-  	resources :comments
-	end
+  resources :posts do 
+    resources :comments
+  end
+
+  resources :categories, except: [:index] do  
+    resources :posts do
+      resources :comments
+    end
+  end
 
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
@@ -14,3 +20,4 @@ Rails.application.routes.draw do
   match '/faq',     to: 'static_pages#faq',     via: 'get'
 
 end
+

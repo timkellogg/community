@@ -21,26 +21,36 @@
 
 <hr>
 
-<%= render :partial => '/layouts/comments' %>
 
 <div class="post-comments">
 	<h3>Comments</h3>
-<% if @post.comments.count != 0 %>
+
+<% if @post.comments %>
 	<% @post.comments.each do |comment| %>
-	<div class="panel panel-default">
+	<div class="individual-comment panel panel-default">	
 		<div class="comment-head panel-heading">
-			<h4><%= comment.user %>  <span class="upvotes">&#x25B2; <%= comment.upvotes %></span> <span class="downvotes">&#x25BC; 
-			<%= comment.downvotes %></span> | Submitted <%= time_ago_in_words (comment.created_at) unless comment.created_at.blank? %> ago</h4>
+			<span class="comment-vote-total"><%= comment.upvotes + comment.downvotes %></span><span class="comment-upvote">&#x25B2;</span> <span class="comment-downvote">&#x25BC;</span> <span class="comment-username"><%= comment.user.username %> </span>
 		</div>
-		<div class="panel-body">
-		<%= comment.body %>
+		<div class="comment-body panel-body">
+			<%= comment.body %>
 		</div>
 	</div>
 	<% end %>
-<% else %>
-<p>No comments yet-be the first!</p>
-</div>
 <% end %>
+</div>
+
+
+<h3>Add a comment:</h3>
+<%= form_for([@post, @post.comments.build], remote: true) do |f| %>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </p>
+<% end %>
+<hr>
 
 
 
