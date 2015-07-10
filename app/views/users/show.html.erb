@@ -24,7 +24,7 @@
 			</ul>
 		<% else %>
 			<p><%= @user.username %> hasn't created any posts yet!</p>
-		<% end %> 
+		<% end %> 	
   </div>
 </div>
 
@@ -35,10 +35,10 @@
   <div class="panel-body">
   	<% if @comments.any? %>
 			<ul id="user-posts-list">
-				<% @comments.each do |post| %>
+				<% @comments.each do |comment| %>
 					<li id="user-post-item">
 						<p><%= truncate(comment.body, length: 200) %></p>
-						<p>submmitted <%= time_ago_in_words(comment.created_at) %>
+						<p>submitted <%= time_ago_in_words(comment.created_at) %> ago</p>
 					</li>
 				<% end %>
 			</ul>

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
 
 	def index
 	end 
@@ -9,8 +10,12 @@ class CommentsController < ApplicationController
 	def create 
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.create(comment_params)
-		@comment = comment.save!
-		redirect_to post_path(@post)
+		@comment.user_id = current_user.id 
+		if @comment.save!
+			redirect_to post_path(@post)
+		else 
+
+		end
 	end
 
 	def new 
@@ -19,6 +24,6 @@ class CommentsController < ApplicationController
 	private 
 
 		def comment_params 
-			params.require(comment).permit(:body)
+			params.require(:comment).permit(:body)
 		end 
 end
