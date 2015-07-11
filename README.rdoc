@@ -4,4 +4,6 @@
 
 * Fix/convert notices to flash notices in the style of the Rails Tutorial so different for danger, etc. 
 * Add more priviledges/restrictions to different actions 
+* AJAXify Comments section 
+
 

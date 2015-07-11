@@ -1,12 +1,13 @@
-<h3>Add a comment:</h3>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  </p>
+<% if @post.comments %>
+	<% @post.comments.each do |comment| %>
+	<div class="individual-comment panel panel-default">	
+		<div class="comment-head panel-heading">
+			<span class="comment-vote-total"><%= comment.upvotes + comment.downvotes %></span><span class="comment-upvote">&#x25B2;</span> <span class="comment-downvote">&#x25BC;</span> <span class="comment-username"><%= comment.user.username %> </span>
+		</div>
+		<div class="comment-body panel-body">
+			<%= comment.body %>
+		</div>
+	</div>
+	<% end %>
 <% end %>
-<hr>
-
+</div>

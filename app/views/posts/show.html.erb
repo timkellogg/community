@@ -16,32 +16,17 @@
 	<%= link_to 'Edit', edit_post_path(@post) %> 
 	<%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you sure?" %>
 </p>
-
 <%= link_to 'Back', posts_path %>
 
 <hr>
 
-
 <div class="post-comments">
 	<h3>Comments</h3>
 
-<% if @post.comments %>
-	<% @post.comments.each do |comment| %>
-	<div class="individual-comment panel panel-default">	
-		<div class="comment-head panel-heading">
-			<span class="comment-vote-total"><%= comment.upvotes + comment.downvotes %></span><span class="comment-upvote">&#x25B2;</span> <span class="comment-downvote">&#x25BC;</span> <span class="comment-username"><%= comment.user.username %> </span>
-		</div>
-		<div class="comment-body panel-body">
-			<%= comment.body %>
-		</div>
-	</div>
-	<% end %>
-<% end %>
-</div>
-
+	<%= render 'posts/comments' %>
 
 <h3>Add a comment:</h3>
-<%= form_for([@post, @post.comments.build], remote: true) do |f| %>
+<%= form_for([@post, @post.comments.build], remote: true, data: {type: 'text' }) do |f| %>
   <p>
     <%= f.label :body %><br>
     <%= f.text_area :body %>
