@@ -41,6 +41,22 @@ User.create!(
 	role: 									"mod"
 )
 
+
+TITLES = %w[front girls sports politics religion programming writing learnprogramming hunting jews]		
+
+# Create Categories 
+10.times do |n|
+
+	subscribers      = rand(1..99)
+	description  		 = Faker::Lorem.paragraph(30)
+  
+	Category.create!(
+		title:          TITLES.pop,
+		subscribers:    subscribers,
+		description:    description
+	)
+end
+
 # Create Posts 
 100.times do |n|
 	title  		  = Faker::Lorem.sentence  
@@ -51,6 +67,7 @@ User.create!(
 	rank        = upvotes + downvotes
 	user_id    	= n
 	img_url     = Faker::Avatar.image 
+	category_id = rand(1..10)
 
 	Post.create!(
 		title: 				title,
@@ -60,26 +77,15 @@ User.create!(
 		downvotes: 		downvotes,
 		rank: 				rank,
 		user_id: 			user_id, 
-		img_url: 			img_url
+		img_url: 			img_url,
+		category_id:  category_id
 	)
 end  
 
-TITLES = %w[front girls sports politics religion programming writing learnprogramming hunting jews]		
+# Create Comments 
 
-# Create Categories 
-10.times do |n|
 
-	subscribers      = rand(1..99)
-	description  		 = Faker::Lorem.paragraph(30)
-	post_id          = rand(1..100)
-  
-	Category.create!(
-		title:          TITLES.pop,
-		subscribers:    subscribers,
-		description:    description,
-		post_id:        post_id
-	)
-end
+
 
 
 

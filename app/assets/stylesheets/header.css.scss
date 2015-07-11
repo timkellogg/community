@@ -5,4 +5,10 @@
 	background-color: white;
 	margin-bottom: 20px;
 	@include box-shadow;
+
+	.category {
+		color: blue;
+		margin-left: 5px;
+		font-style: italic;
+	}
 }
