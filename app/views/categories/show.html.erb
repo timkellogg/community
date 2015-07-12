@@ -1,9 +1,10 @@
 <h3><%= @category.title %> </h3>
 
-<%= will_paginate @posts %>
+<% if @posts.count > 30 %>
+	<%= will_paginate @posts %>
+<% end %>
 
   <table id="posts-listing" class="table-striped">
-
     <% @category.posts.each_with_index do |post, index| %> 
       <tr class="individual-post" colspan="12">
         <td class="post-rank" colspan="2">
@@ -39,4 +40,6 @@
   </table>
 <br>
 
-<%= will_paginate @posts %>
+<% if @posts.count > 30 %>
+	<%= will_paginate @posts %>
+<% end %>
