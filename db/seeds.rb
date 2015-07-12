@@ -41,20 +41,18 @@ User.create!(
 	role: 									"mod"
 )
 
-
-TITLES = %w[front girls sports politics religion programming writing learnprogramming hunting jews]		
+TITLES = %w[nature sports politics religion programming writing learnprogramming hunting science all]		
 
 # Create Categories 
-10.times do |n|
+categories = (1..10).to_a.map do |n|
+  subscribers        = rand(1..99)
+  description        = Faker::Lorem.paragraph(30)
 
-	subscribers      = rand(1..99)
-	description  		 = Faker::Lorem.paragraph(30)
-  
-	Category.create!(
-		title:          TITLES.pop,
-		subscribers:    subscribers,
-		description:    description
-	)
+  Category.create!(
+    title:          TITLES.pop,
+    subscribers:    subscribers,
+    description:    description
+  )
 end
 
 # Create Posts 
@@ -69,7 +67,7 @@ end
 	img_url     = Faker::Avatar.image 
 	category_id = rand(1..10)
 
-	Post.create!(
+	post = Post.create!(
 		title: 				title,
 		link: 				link,
 		content:      content, 
@@ -78,11 +76,16 @@ end
 		rank: 				rank,
 		user_id: 			user_id, 
 		img_url: 			img_url,
-		category_id:  category_id
 	)
-end  
+	
+	post.categorizations.create(
+		category: categories[0]
+	)
+	post.categorizations.create(
+		category: categories[rand(categories.size)]
+	)
+end 
 
-# Create Comments 
 
 
 
