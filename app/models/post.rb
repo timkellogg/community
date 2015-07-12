@@ -3,5 +3,6 @@ class Post < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, :through => :categorizations
 	has_many :comments, dependent: :destroy  
+
 end
 
