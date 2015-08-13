@@ -1,0 +1,19 @@
+<div id="userbar-container" class="col-md-12">
+	<div id="userbar-body">
+		<div class="messages-container col-md-12">
+
+			<% flash.each do |key, value| %>
+	  		<div class="alert alert-<%= key %>"><%= value %></div>
+			<% end %>
+
+			<div class="profile-container col-md-12">
+				<% if can? :index, :users  %>
+					<div id="admin-bar">
+						<%= link_to 'Users', users_path, class: "navbar-brand" %>
+					</div>		
+				<% end %>
+			</div>
+
+		</div>
+	</div>
+</div>

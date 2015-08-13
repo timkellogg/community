@@ -1,8 +1,13 @@
 class CategoriesController < ApplicationController
-
-	# thread homepages 
 	def show
-		@category = Category.find(params[:id])
-		@posts = @category.posts.paginate(:page => params[:page]).order("rank DESC")
-	end 
-end 
+		if params[:id]
+			@category = Category.find(params[:id])
+			@posts = @category.posts.order("rank DESC")
+			@posts = @posts.paginate(:page => params[:page], :per_page => 25)
+		else
+			@category = Category.find(1)
+			@posts = @category.posts.order("rank DESC")
+			@posts = @posts.paginate(:page => params[:page], :per_page => 25)
+		end
+	end
+end

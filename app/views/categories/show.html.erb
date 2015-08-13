@@ -1,18 +1,18 @@
-<h3><%= @category.title %> </h3>
+<div class="row text-center">
+	<h3><%= @category.title %> </h3>
+</div>
 
-<% if @posts.count > 30 %>
-	<%= will_paginate @posts %>
-<% end %>
+<%= will_paginate @posts %>
 
-  <table id="posts-listing" class="table-striped">
-    <% @category.posts.each_with_index do |post, index| %> 
+  <table id="posts-listing" class="table-striped table-condensed">
+    <% @posts.each_with_index do |post, index| %>
       <tr class="individual-post" colspan="12">
         <td class="post-rank" colspan="2">
           <%= index + 1 %>
         </td>
         <td class="post-votes" colspan="2">
           <span class="post-votes-up"><%= post.upvotes %></span>
-          <br >
+          <br>
           <span class="post-votes-down"><%= post.downvotes %></span>
         </td>
 
@@ -29,10 +29,10 @@
             <li class="post-content"><%= truncate post.content, length: 400 %></li>
             <li><span class="post-comments"><%= post.comments.count %> comments</span></li>
           <% end %>
-          
+
           <%= link_to user_path(post.user) do %>
             <li><span class="post-created-date">Submitted <%= time_ago_in_words(post.created_at) %> ago</span>
-            &mdash;<span class="post-user"><%= User.find(post.user).username %></span></li> 
+            &mdash;<span class="post-user"><%= User.find(post.user).username %></span></li>
           <% end %>
         </td>
       </tr>
@@ -40,6 +40,4 @@
   </table>
 <br>
 
-<% if @posts.count > 30 %>
-	<%= will_paginate @posts %>
-<% end %>
+<%= will_paginate @posts %>

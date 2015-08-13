@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Community</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= render 'layouts/shim' %>
-</head>
+	<head>
+	  <title>Community</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	  <%= render 'layouts/shim' %>
+	</head>
 <body>
 
 <div class="container-fluid">
-	<%= render :partial => '/layouts/site_header' %>
+	<%= render '/layouts/site_header' %>
 
-	<div id="main-content" class="col-md-8">
+	<%= render './layouts/userbar' %>
 
-	<% flash.each do |key, value| %>
-  	<div class="alert alert-<%= key %>"><%= value %></div>
-	<% end %>
-
-
-		<%= yield %>
+	<div id="main-content" class="col-xs-12">
+		<div id="main-content-yield" class="col-md-9">
+			<%= yield %>
+		</div>
+		
+		<div id="user_nav" class="col-md-3 text-center">
+			<%= render '/layouts/site_sidebar' %>
+		</div>
 	</div>
 
-	<%= render :partial => '/layouts/site_sidebar' %>
-
 </div>
-	<%= render :partial => '/layouts/footer' %>
+	<%= render '/layouts/footer' %>
 	<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

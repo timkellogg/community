@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-	root :to => "posts#index" 
+  
+  root :to => "categories#show"
 
   devise_for :users 
   resources :users, :only => [:index, :show]

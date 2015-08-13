@@ -16,10 +16,11 @@ class UsersController < ApplicationController
 	end
 
 	def edit 
-		authorize! :index, User
+		authorize! :edit, User
 	end 
 
 	def destroy
+		authorize! :destroy, User 
 	end
 
 	private 
@@ -30,6 +31,5 @@ class UsersController < ApplicationController
 				flash[:danger] = "You don't have permission to do that."
 			end 
 		end
-
 	
 end
