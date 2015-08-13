@@ -27,7 +27,7 @@ Community is a community-driven forum inspired by Reddit and Voat. It aims to pr
 
 ## Setup
 
-* Download the Repository
+* Download the repository
 * `cd` in to the directory
 * `bundle install` gem dependencies
 * `rake db:migrate` to refresh and reinstall the database
