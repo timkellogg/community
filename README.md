@@ -36,7 +36,7 @@ Community is a community-driven forum inspired by Reddit and Voat. It aims to pr
 ## Technologies Used
 
 * Testing: test-unit, capybara
-* Databse: sqlite3
+* Database: sqlite3
 * Server: default (will move to puma)
 * Front-End: Bootstrap, jQuery
 * Authentication: devise
